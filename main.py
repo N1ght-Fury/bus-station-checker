@@ -17,8 +17,8 @@ def main(bus, update=False, url=''):
 	
 	if (update):
 		Update_Codes.update_bus_codes(url)
-		print('Bus codes updated..\n')
-		print('Checking buses for: ' + read_file(station=True))
+		print('\n[+] Bus codes updated..\n')
+		print('[+] Checking buses for: ' + read_file(station=True))
 
 		return True
 
@@ -29,15 +29,21 @@ def main(bus, update=False, url=''):
 
 	for i in bus_codes:
 		if (i == bus):
-			print('Geçer..\n')
+			print('[-] Geçer..\n')
 			return True
 	
-	print('Geçmez..\n')
+	print('[-] Geçmez..\n')
 	return False
 
 if __name__ == '__main__':
 
-	print('Checking buses for: ' + read_file(station=True))
+	try:
+		read_file()
+	except Exception as e:
+		url = input('[+] Enter an url: ')
+		Update_Codes.update_bus_codes(url)
+
+	print('\n[+] Checking buses for: ' + read_file(station=True))
 
 	while True:
 		update = False
@@ -49,5 +55,6 @@ if __name__ == '__main__':
 			try:
 				url = bus[1]
 			except Exception as e:
-				pass
+				print('[-] It seems like you forget to enter an url. Try again.\n')
+				continue
 		main(bus[0].upper(), update, url)
