@@ -3,8 +3,7 @@ from bs4 import BeautifulSoup
 
 def update_bus_codes(url=''):
 	
-	if (url == ''):
-		url = 'https://www.iett.istanbul/tr/main/duraklar/225632/YEN%C4%B0SAHRA-%C4%B0ETT-Duraktan-Ge%C3%A7en-Hatlar-Durak-Bilgileri-Hatt%C4%B1n-Duraktan-Ge%C3%A7i%C5%9F-Saatleri'
+	#https://www.iett.istanbul/tr/main/duraklar/225632/YEN%C4%B0SAHRA-%C4%B0ETT-Duraktan-Ge%C3%A7en-Hatlar-Durak-Bilgileri-Hatt%C4%B1n-Duraktan-Ge%C3%A7i%C5%9F-Saatleri
 	response = requests.get(url)
 	html_content = response.content
 	soup = BeautifulSoup(html_content, "html.parser")
