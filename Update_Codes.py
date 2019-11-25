@@ -7,7 +7,7 @@ def update_bus_codes(url=''):
 	response = requests.get(url)
 	html_content = response.content
 	soup = BeautifulSoup(html_content, "html.parser")
-	buses = soup.find_all('mark')
+	buses = soup.find_all('span', {'class':'line-number'})
 	station_name = str(soup.find('span',{'class':'station-name'}).text) + ' '+ str(soup.find('span',{'class':'station-name-suffix'}).text)
 
 	bus_codes = []
